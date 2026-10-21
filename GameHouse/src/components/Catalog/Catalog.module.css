@@ -1,0 +1,425 @@
+
+.catalogo {
+    padding: 80px var(--page-padding);
+    background: var(--bg-secondary);
+    color: var(--text);
+    scroll-margin-top: 30px;
+}
+
+/* Encabezado del catálogo */
+
+.catalogoHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 35px;
+}
+
+.catalogoTag {
+    margin-bottom: 12px;
+    color: var(--accent-light);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.titulo {
+    margin: 0 0 14px;
+    color: var(--text-h);
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.7px;
+}
+
+.catalogoDescripcion {
+    max-width: 570px;
+    margin: 0;
+    color: var(--text);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* Contador de favoritos */
+
+.contadorFavoritos {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+    padding: 16px 22px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    transition: border-color 0.2s ease;
+}
+
+.contadorFavoritos:hover {
+    border-color: var(--accent-border);
+}
+
+.contadorFavoritos > span {
+    color: var(--favorite);
+    font-size: 2rem;
+}
+
+.contadorFavoritos strong {
+    color: var(--text-h);
+    font-size: 1.5rem;
+    line-height: 1.2;
+}
+
+.contadorFavoritos p {
+    margin: 4px 0 0;
+    color: var(--text);
+    font-size: 0.85rem;
+}
+
+/* Buscador y filtros */
+
+.catalogoFiltros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.catalogoFiltros input,
+.catalogoFiltros select {
+    min-height: 46px;
+    padding: 12px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-h);
+    font: inherit;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.catalogoFiltros input {
+    flex: 1;
+    min-width: 200px;
+}
+
+.catalogoFiltros input::placeholder {
+    color: var(--text-muted);
+}
+
+.catalogoFiltros input:focus,
+.catalogoFiltros select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+.catalogoFiltros select {
+    cursor: pointer;
+    max-width: 100%;
+}
+
+.catalogoFiltros select option {
+    background: var(--surface);
+    color: var(--text-h);
+}
+
+.botonFiltro {
+    min-height: 46px;
+    padding: 12px 18px;
+    border: 1px solid var(--accent-border);
+    border-radius: var(--radius-sm);
+    background: var(--accent-bg);
+    color: var(--accent-light);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.botonFiltro:hover {
+    background: var(--accent);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.filtroActivo {
+    background: var(--accent);
+    color: #ffffff;
+    border-color: var(--accent);
+}
+
+/* Cantidad de resultados */
+
+.resultados {
+    margin: 24px 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Cuadrícula de videojuegos */
+
+.juegosGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    align-items: stretch;
+}
+
+/* Tarjeta individual */
+
+.juegoCard {
+    min-width: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow);
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.juegoCard:hover {
+    transform: translateY(-5px);
+    border-color: var(--border-hover);
+    box-shadow: var(--shadow-accent);
+}
+
+/* Portada del videojuego */
+
+.juegoPortada {
+    min-height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            var(--accent-bg),
+            transparent 70%
+        ),
+        var(--code-bg);
+    border-bottom: 1px solid var(--border);
+}
+
+.juegoEmoji {
+    display: block;
+    font-size: 4rem;
+    line-height: 1;
+    transition: transform 0.25s ease;
+}
+
+.juegoCard:hover .juegoEmoji {
+    transform: scale(1.12);
+}
+
+/* Botón de favorito */
+
+.botonFavorito {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    background: var(--bg);
+    color: var(--text-h);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.botonFavorito:hover {
+    transform: scale(1.1);
+    border-color: var(--favorite);
+    color: var(--favorite);
+}
+
+.esFavorito {
+    background: var(--favorite);
+    border-color: var(--favorite);
+    color: #ffffff;
+}
+
+.esFavorito:hover {
+    background: var(--danger);
+    border-color: var(--danger);
+    color: #ffffff;
+}
+
+/* Información del juego */
+
+.juegoInfo {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.juegoGenero {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid var(--accent-border);
+    border-radius: var(--radius-full);
+    background: var(--accent-bg);
+    color: var(--accent-light);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.juegoInfo h3 {
+    margin: 14px 0 10px;
+    color: var(--text-h);
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+.juegoDescripcion {
+    flex: 1;
+    margin: 0 0 18px;
+    color: var(--text);
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+/* Plataformas */
+
+.juegoPlataforma {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding-top: 14px;
+    margin-top: auto;
+    border-top: 1px solid var(--border);
+}
+
+.juegoPlataforma > span {
+    color: var(--accent-light);
+    font-size: 1rem;
+}
+
+.juegoPlataforma p {
+    margin: 0;
+    color: var(--text);
+    font-size: 0.8rem;
+    line-height: 1.6;
+}
+
+/* Estado sin resultados */
+
+.catalogoVacio {
+    padding: 60px 20px;
+    text-align: center;
+    background: var(--surface);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-md);
+}
+
+.catalogoVacio > span {
+    display: block;
+    margin-bottom: 16px;
+    font-size: 3rem;
+}
+
+.catalogoVacio h3 {
+    margin-bottom: 10px;
+    color: var(--text-h);
+}
+
+.catalogoVacio p {
+    margin: 0;
+    color: var(--text);
+}
+
+/* Accesibilidad */
+
+.botonFavorito:focus-visible,
+.botonFiltro:focus-visible {
+    outline: 2px solid var(--accent-light);
+    outline-offset: 3px;
+}
+
+/* Tablets */
+
+@media (max-width: 1000px) {
+    .juegosGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .catalogoHeader {
+        align-items: flex-start;
+    }
+}
+
+/* Móviles */
+
+@media (max-width: 600px) {
+    .catalogo {
+        padding: 55px var(--page-padding);
+    }
+
+    .catalogoHeader {
+        flex-direction: column;
+        gap: 22px;
+    }
+
+    .contadorFavoritos {
+        align-self: flex-start;
+    }
+
+    .catalogoFiltros {
+        flex-direction: column;
+    }
+
+    .catalogoFiltros input,
+    .catalogoFiltros select,
+    .botonFiltro {
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+    }
+
+    .juegosGrid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .juegoPortada {
+        min-height: 165px;
+    }
+}
+
+/* Movimiento reducido */
+
+@media (prefers-reduced-motion: reduce) {
+    .juegoCard,
+    .juegoEmoji,
+    .botonFavorito,
+    .botonFiltro {
+        transition: none;
+    }
+
+    .juegoCard:hover,
+    .juegoCard:hover .juegoEmoji,
+    .botonFavorito:hover,
+    .botonFiltro:hover {
+        transform: none;
+    }
+}

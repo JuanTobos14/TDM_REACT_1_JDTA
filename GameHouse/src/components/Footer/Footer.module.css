@@ -1,0 +1,129 @@
+
+.footer {
+    margin-top: auto;
+    padding: 55px var(--page-padding) 20px;
+    background: var(--bg);
+    color: var(--text);
+    border-top: 1px solid var(--border);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1.5fr 0.8fr 1.2fr;
+    gap: 48px;
+    padding-bottom: 40px;
+}
+
+.brand,
+.info {
+    min-width: 0;
+}
+
+.logo {
+    display: inline-block;
+    margin-bottom: 16px;
+    color: var(--text-h);
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--accent-light);
+}
+
+.brand p,
+.info p {
+    max-width: 360px;
+    margin: 0;
+    color: var(--text);
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.links h3,
+.info h3 {
+    margin: 8px 0 18px;
+    color: var(--text-h);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.links a,
+.backLink {
+    color: var(--text);
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.links a:hover,
+.backLink:hover {
+    color: var(--accent-light);
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+}
+
+.bottom p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.6;
+}
+
+.backLink {
+    flex-shrink: 0;
+    color: var(--accent-light);
+    font-weight: 600;
+}
+
+/* Tablets */
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 32px;
+    }
+
+    .brand {
+        grid-column: 1 / -1;
+    }
+
+    .bottom {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+/* Móviles */
+
+@media (max-width: 450px) {
+    .footer {
+        padding-top: 40px;
+    }
+
+    .container {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 28px;
+    }
+
+    .brand {
+        grid-column: auto;
+    }
+}

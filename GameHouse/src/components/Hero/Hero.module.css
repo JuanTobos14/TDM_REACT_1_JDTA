@@ -1,0 +1,154 @@
+
+.hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 75vh;
+    padding: 80px var(--page-padding);
+    overflow: hidden;
+    background:
+        radial-gradient(
+            ellipse at 85% 45%,
+            var(--accent-bg),
+            transparent 45%
+        ),
+        var(--bg);
+    color: var(--text);
+}
+
+.heroContent {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+}
+
+.heroTag {
+    margin: 0 0 24px;
+    color: var(--accent-light);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    line-height: 1.5;
+}
+
+.title {
+    max-width: 760px;
+    margin: 0 0 24px;
+    color: var(--text-h);
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1.1;
+}
+
+.title span {
+    color: var(--accent-light);
+}
+
+.heroDescription {
+    max-width: 580px;
+    margin: 0 0 32px;
+    color: var(--text);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.heroButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 15px 24px;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-md);
+    background: var(--accent);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: var(--shadow-accent);
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.heroButton span {
+    font-size: 1.3rem;
+    transition: transform 0.2s ease;
+}
+
+.heroButton:hover {
+    background: var(--accent-hover);
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-accent);
+}
+
+.heroButton:hover span {
+    transform: translateX(4px);
+}
+
+.heroButton:focus-visible {
+    outline: 2px solid var(--accent-light);
+    outline-offset: 4px;
+}
+
+/* Tablets */
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: 65vh;
+        padding-top: 65px;
+        padding-bottom: 65px;
+    }
+
+    .title {
+        letter-spacing: -1px;
+    }
+
+    .heroDescription {
+        font-size: 1rem;
+    }
+}
+
+/* Móviles */
+
+@media (max-width: 480px) {
+    .hero {
+        min-height: auto;
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+
+    .heroTag {
+        font-size: 0.7rem;
+        letter-spacing: 1.5px;
+    }
+
+    .title {
+        font-size: clamp(2.4rem, 11vw, 3.4rem);
+    }
+
+    .heroButton {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* Accesibilidad */
+
+@media (prefers-reduced-motion: reduce) {
+    .heroButton,
+    .heroButton span {
+        transition: none;
+    }
+
+    .heroButton:hover {
+        transform: none;
+    }
+
+    .heroButton:hover span {
+        transform: none;
+    }
+}
