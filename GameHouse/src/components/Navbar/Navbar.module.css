@@ -90,3 +90,67 @@
         font-size: 0.85rem;
     }
 }
+
+
+/* Botón para cambiar el tema */
+
+.themeToggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+
+    background: var(--surface);
+    color: var(--text);
+
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.4;
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    transition:
+        background-color var(--theme-transition),
+        color var(--theme-transition),
+        border-color var(--theme-transition),
+        box-shadow var(--theme-transition),
+        transform 0.2s ease;
+}
+
+.themeToggle:hover {
+    background: var(--accent-bg);
+    color: var(--accent-light);
+    border-color: var(--accent);
+    box-shadow: var(--shadow-accent);
+}
+
+.themeToggle:active {
+    transform: scale(0.97);
+}
+
+.themeToggle:focus-visible {
+    outline: 2px solid var(--accent-light);
+    outline-offset: 3px;
+}
+
+/* Ajustes para móviles */
+
+@media (max-width: 480px) {
+    .themeToggle {
+        gap: 5px;
+        padding: 9px 8px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .themeToggle {
+        transition: none;
+    }
+}

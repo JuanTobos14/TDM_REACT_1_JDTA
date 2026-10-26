@@ -1,5 +1,4 @@
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './Catalog.module.css';
 
 const videojuegos = [
@@ -62,12 +61,43 @@ const videojuegos = [
             'Explora el mundo con Peppa Pig, visita lugares increíbles y disfruta de divertidas aventuras para toda la familia.',
         imagen:
             'https://imgs.search.brave.com/FUBSiDlaYKJ0hxFaBFNebUI1klWWz153SGMKggoMVp4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdG9y/ZS1pbWFnZXMucy1t/aWNyb3NvZnQuY29t/L2ltYWdlL2FwcHMu/MTkzNTUuMTQ1MjMw/NTY4MzA3NTMxMzUu/MGY4MjE2NTktYjRi/Ny00OWU2LWFlM2Et/ZGNjMjMxOTQ1NGQ2/LmQ1OGI2YWY0LTA3/ZmYtNDFiZC1hNjcw/LWVkYTI2Mjk0NTI4/YT9xPTkwJnc9NDgw/Jmg9Mjcw'
+    },
+    {
+        id: 7,
+        nombre: 'GTA VI',
+        genero: 'Acción',
+        plataforma: 'PlayStation, Xbox',
+        descripcion:
+            'NN',
+        imagen: 'https://imgs.search.brave.com/1mVPDc-DsKLMQc2CGBSRQWkDVHknpnHFjAh8ZHEXTy8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLjNk/anVlZ29zLmNvbS9q/dWVnb3MvMTY3NTEv/Z3JhbmRfdGhlZnRf/YXV0b192aS9mb3Rv/cy92aWRlb3MvZ3Jh/bmRfdGhlZnRfYXV0/b192aS02MDM4MjA0/LndlYnA'
     }
 ];
 
 function Catalog() {
-    const [favoritos, setFavoritos] = useState([]);
+
+    //LocalStorage
+
+    const [favoritos, setFavoritos] = useState(() => {
+        try {
+            const favoritosGuardados = localStorage.getItem('favoritos');
+
+            return favoritosGuardados
+                ? JSON.parse(favoritosGuardados)
+                : [];
+        } catch (error) {
+            console.error('Error al cargar favoritos:', error);
+            return [];
+        }
+    });
+
     const [soloFavoritos, setSoloFavoritos] = useState(false);
+
+    useEffect(() => {
+        localStorage.setItem('favoritos', JSON.stringify(favoritos));
+    }, [favoritos]);
+
+
+
     const [busqueda, setBusqueda] = useState('');
     const [genero, setGenero] = useState('Todos');
 

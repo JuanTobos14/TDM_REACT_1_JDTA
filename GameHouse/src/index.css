@@ -1,4 +1,11 @@
+
+/* ========================================
+   1. TEMA OSCURO (PREDETERMINADO)
+======================================== */
+
 :root {
+  color-scheme: dark;
+
   /* Colores principales */
   --bg: #080b10;
   --bg-secondary: #10151d;
@@ -10,7 +17,7 @@
   --text-h: #ffffff;
   --text-muted: #7d8a9b;
 
-  /* Identidad visual: verde gamer */
+  /* Identidad gamer */
   --accent: #00ff66;
   --accent-hover: #00cc52;
   --accent-light: #69ff9e;
@@ -26,18 +33,18 @@
   --border: #293443;
   --border-hover: #00ff66;
   --code-bg: #10151d;
+  --selection-text: #080b10;
 
   /* Sombras */
   --shadow:
     0 10px 25px rgba(0, 0, 0, 0.4),
     0 4px 10px rgba(0, 0, 0, 0.2);
 
-  --shadow-accent:
-    0 8px 24px rgba(0, 255, 102, 0.18);
+  --shadow-accent: 0 8px 24px rgba(0, 255, 102, 0.18);
 
   /* Tipografía */
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
   /* Forma y espaciado */
@@ -49,7 +56,10 @@
   --container-width: 1440px;
   --page-padding: 8%;
 
-  /* Configuración global */
+  /* Transiciones */
+  --theme-transition: 0.5s ease;
+
+  /* Estilos globales */
   font-family: var(--sans);
   font-size: 16px;
   line-height: 1.6;
@@ -57,21 +67,60 @@
   letter-spacing: 0.18px;
 
   color: var(--text);
-  background: var(--bg);
-  color-scheme: dark;
+  background-color: var(--bg);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  /* Compatibilidad con navegadores */
   font-optical-sizing: auto;
 }
 
-/* Reset general */
+/* ========================================
+   2. TEMA CLARO
+======================================== */
 
-* {
+:root.light {
+  color-scheme: light;
+
+  --bg: #ffffff;
+  --bg-secondary: #f5f7fa;
+  --surface: #eef1f5;
+  --surface-hover: #e2e8ef;
+
+  --text: #394454;
+  --text-h: #111827;
+  --text-muted: #697586;
+
+  --accent: #00cc52;
+  --accent-hover: #00a842;
+  --accent-light: #00b84a;
+  --accent-bg: rgba(0, 204, 82, 0.10);
+  --accent-border: rgba(0, 204, 82, 0.35);
+
+  --favorite: #00cc52;
+  --success: #00a842;
+  --danger: #e53950;
+
+  --border: #dce2e9;
+  --border-hover: #00cc52;
+  --code-bg: #f5f7fa;
+  --selection-text: #ffffff;
+
+  --shadow:
+    0 10px 25px rgba(17, 24, 39, 0.08),
+    0 4px 10px rgba(17, 24, 39, 0.04);
+
+  --shadow-accent: 0 8px 24px rgba(0, 204, 82, 0.14);
+}
+
+/* ========================================
+   4. RESET GENERAL
+======================================== */
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -86,17 +135,29 @@ body {
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
-  background: var(--bg);
+
+  background-color: var(--bg);
   color: var(--text);
+
+  transition:
+    background-color var(--theme-transition),
+    color var(--theme-transition);
 }
 
 #root {
   width: 100%;
   min-height: 100vh;
   margin: 0 auto;
+
   display: flex;
   flex-direction: column;
-  background: var(--bg);
+
+  background-color: var(--bg);
+  color: var(--text);
+
+  transition:
+    background-color var(--theme-transition),
+    color var(--theme-transition);
 }
 
 main {
@@ -120,25 +181,116 @@ button {
   cursor: pointer;
 }
 
+/* ========================================
+   5. TRANSICIONES VISUALES
+======================================== */
+
+/* Los contenedores y componentes habituales */
+
+header,
+nav,
+main,
+footer,
+section,
+article,
+aside,
+.card,
+[class*="card"],
+[class*="surface"],
+[class*="panel"],
+[class*="modal"],
+[class*="dropdown"] {
+  transition:
+    background-color var(--theme-transition),
+    color var(--theme-transition),
+    border-color var(--theme-transition),
+    box-shadow var(--theme-transition);
+}
+
+/* Textos y elementos de navegación */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+label,
+a,
+strong,
+small,
+li {
+  transition: color var(--theme-transition);
+}
+
+/* Botones */
+
+button {
+  transition:
+    background-color var(--theme-transition),
+    color var(--theme-transition),
+    border-color var(--theme-transition),
+    box-shadow var(--theme-transition);
+}
+
+/* Campos de formulario */
+
+input,
+select,
+textarea {
+  transition:
+    background-color var(--theme-transition),
+    color var(--theme-transition),
+    border-color var(--theme-transition);
+}
+
+/* SVG: solo sus colores */
+
+svg,
+svg path,
+svg circle,
+svg rect,
+svg line,
+svg polygon,
+svg polyline {
+  transition:
+    fill var(--theme-transition),
+    stroke var(--theme-transition);
+}
+
+/* ========================================
+   6. ENLACES
+======================================== */
+
 a {
   color: var(--accent-light);
   text-decoration: none;
-  transition: color 0.2s ease;
+
+  transition: color var(--theme-transition);
 }
 
 a:hover {
   color: var(--accent);
 }
 
+/* ========================================
+   7. ACCESIBILIDAD Y FOCO
+======================================== */
+
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
-select:focus-visible {
+select:focus-visible,
+textarea:focus-visible {
   outline: 2px solid var(--accent-light);
   outline-offset: 3px;
 }
 
-/* Jerarquía tipográfica */
+/* ========================================
+   8. JERARQUÍA TIPOGRÁFICA
+======================================== */
 
 h1,
 h2,
@@ -147,9 +299,11 @@ h4,
 h5,
 h6 {
   margin-top: 0;
+
   font-family: var(--heading);
   font-weight: 700;
   line-height: 1.2;
+
   color: var(--text-h);
 }
 
@@ -174,7 +328,9 @@ p {
   margin-top: 0;
 }
 
-/* Elementos reutilizables */
+/* ========================================
+   9. CÓDIGO Y CONTADORES
+======================================== */
 
 code,
 .counter {
@@ -186,35 +342,44 @@ code {
   padding: 4px 8px;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  background: var(--code-bg);
+
+  background-color: var(--code-bg);
   font-size: 0.9rem;
 }
 
+/* ========================================
+   10. SELECCIÓN DE TEXTO
+======================================== */
+
 ::selection {
-  color: #ffffff;
-  background: var(--accent);
+  color: var(--selection-text);
+  background-color: var(--accent);
 }
 
-/* Scrollbar */
+/* ========================================
+   11. SCROLLBAR
+======================================== */
 
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg);
+  background-color: var(--bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border);
+  background-color: var(--border);
   border-radius: var(--radius-full);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
+  background-color: var(--accent);
 }
 
-/* Responsive */
+/* ========================================
+   12. RESPONSIVE
+======================================== */
 
 @media (max-width: 768px) {
   :root {
@@ -226,6 +391,10 @@ code {
     letter-spacing: -0.8px;
   }
 }
+
+/* ========================================
+   13. REDUCIR MOVIMIENTO
+======================================== */
 
 @media (prefers-reduced-motion: reduce) {
   *,
